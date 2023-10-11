@@ -12,6 +12,8 @@ namespace n01629153Assignment2.Controllers
         /// <summary>
         /// This function is used to calculate total calories of the food based on user input 
         /// for the items.
+        /// For Ex: GET: api/J1/Menu/1/2/3/4 -> Your total calorie count is 691
+        /// 1,2,3,4 these number represents the number from the collection of calories for that particular item.
         /// </summary>
         /// <param name="burger"></param>
         /// <param name="drink"></param>

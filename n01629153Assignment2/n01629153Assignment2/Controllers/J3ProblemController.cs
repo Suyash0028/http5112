@@ -10,11 +10,13 @@ namespace n01629153Assignment2.Controllers
     public class J3ProblemController : ApiController
     {
         /// <summary>
+        /// J3 : Secret Instruction.
         /// This function takes 5 digits as a input denotes 5 digit secret code number and decodes it 
         /// and returns direction with steps.
         /// First two digits will decide the direction and last three will decide the steps.
         /// If sum is zero or even then turn right and if sum is odd then turn left.
         /// If the input is 99999 then nothing that means exit.
+        /// For ex: GET: api/J3/SecretCode/5/7/2/3/4 -> right 234
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>

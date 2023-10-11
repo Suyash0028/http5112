@@ -13,6 +13,8 @@ namespace n01629153Assignment2.Controllers
         /// This function checks which number is greater from the input and process the data 
         /// accordingly to calculates the possibility to get 10 as sum by addition of both the 
         /// dice value.
+        /// For ex: GET: api/J2/DiceGame/6/8 -> There are 5 total ways to get the sum 10.
+        /// First value represents the number of sides for the 1st dice and 2nd for 2nd dice.
         /// </summary>
         /// <param name="m"></param>
         /// <param name="n"></param>
