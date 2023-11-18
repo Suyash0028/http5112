@@ -94,7 +94,8 @@ namespace n01629153Cumulative1.Controllers
                 DataModel.EmployeeNumber = ResultSet["employeenumber"].ToString();
                 DataModel.HireDate = Convert.ToDateTime(ResultSet["hiredate"]);
                 DataModel.Salary = Convert.ToDouble(ResultSet["salary"]);
-
+                DataModel.TeacherId = Convert.ToInt32(ResultSet["teacherid"]);
+                
                 teachers.Add(DataModel);
             }
 
@@ -103,6 +104,40 @@ namespace n01629153Cumulative1.Controllers
 
             //Return the collection fo teachers data
             return teachers;
+        }
+
+        // GET api/TeacherData/FindTeacher/{TeacherID} -> {"TeacherID"}
+        [HttpGet]
+        [Route("api/TeacherData/FindTeacher/{TeacherID}")]
+        public Teacher FindTeacher(int TeacherID)
+        {
+            MySqlConnection Conn = SchoolDb.AccessDatabase();
+
+            //Open the connection
+            Conn.Open();
+
+            //create a command 
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "Select * from teachers where teacherid=" + TeacherID;
+
+            //Gather Result Set of Query into a variable
+            MySqlDataReader ResultSet = cmd.ExecuteReader();
+
+            Teacher SelectedTeacher = new Teacher();
+
+            while (ResultSet.Read()) {
+                
+                SelectedTeacher.TeacherId = Convert.ToInt32(ResultSet["teacherid"]);
+                SelectedTeacher.TeacherFirstName = ResultSet["teacherfname"].ToString();
+                SelectedTeacher.TeacherLastName = ResultSet["teacherlname"].ToString();
+                SelectedTeacher.TeacherSalary = ResultSet["salary"].ToString();
+                SelectedTeacher.TeacherHireDate = Convert.ToDateTime(ResultSet["hiredate"]);
+            }
+
+            Conn.Close();
+            return SelectedTeacher;
         }
 
     }
