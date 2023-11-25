@@ -38,7 +38,7 @@ namespace n01629153Cumulative1.Controllers
         public ActionResult Show(int id)
         {
             TeacherDataController teacherDataController = new TeacherDataController();
-            Teacher SelectedTeacher =  Controller.FindTeacher(id);
+            Teacher SelectedTeacher = teacherDataController.FindTeacher(id);
             // we want to show a particular teacher given the id
             return View(SelectedTeacher);
         }

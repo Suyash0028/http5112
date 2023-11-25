@@ -111,7 +111,7 @@ namespace n01629153Cumulative1.Controllers
         [Route("api/TeacherData/FindTeacher/{TeacherID}")]
         public Teacher FindTeacher(int TeacherID)
         {
-            MySqlConnection Conn = SchoolDb.AccessDatabase();
+            MySqlConnection Conn = SchoolDB.AccessDatabase();
 
             //Open the connection
             Conn.Open();
@@ -130,10 +130,10 @@ namespace n01629153Cumulative1.Controllers
             while (ResultSet.Read()) {
                 
                 SelectedTeacher.TeacherId = Convert.ToInt32(ResultSet["teacherid"]);
-                SelectedTeacher.TeacherFirstName = ResultSet["teacherfname"].ToString();
-                SelectedTeacher.TeacherLastName = ResultSet["teacherlname"].ToString();
-                SelectedTeacher.TeacherSalary = ResultSet["salary"].ToString();
-                SelectedTeacher.TeacherHireDate = Convert.ToDateTime(ResultSet["hiredate"]);
+                SelectedTeacher.TeacherFName = ResultSet["teacherfname"].ToString();
+                SelectedTeacher.TeacherLName = ResultSet["teacherlname"].ToString();
+                SelectedTeacher.Salary = Convert.ToDouble(ResultSet["salary"]);
+                SelectedTeacher.HireDate = Convert.ToDateTime(ResultSet["hiredate"]);
             }
 
             Conn.Close();
