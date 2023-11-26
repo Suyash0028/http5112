@@ -125,6 +125,9 @@ namespace n01629153Cumulative2.Controllers
         [EnableCors(origins: "*", methods: "*", headers: "*")]
         public void AddTeacher([FromBody] Teacher NewTeacher)
         {
+            // if(ModelState.IsValid){
+                    //To check for validation
+            // }
             //Create an instance of a connection
             MySqlConnection Conn = SchoolDB.AccessDatabase();
 
