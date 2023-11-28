@@ -8,7 +8,7 @@ function AddTeacher() {
 	//POST : http://localhost:44324/api/TeacherData/AddTeacher
 	//with POST data of Teachername, salary, hiredate, etc.
 
-	var URL = "http://localhost:44324/api/TeacherData/AddTeacher";
+	var URL = "https://localhost:44324/api/TeacherData/AddTeacher";
 
 	var rq = new XMLHttpRequest();
 	
@@ -79,32 +79,31 @@ function AddTeacher() {
 		return false;
 	}
 	else {
-		ErrorSalaryMsg.innerText = "";
+		if (isNaN(Salary)) {
+			ErrorSalaryMsg.innerText = "Please enter proper value for salary field!!";
+			ErrorSalaryMsg.style.color = "Red";
+			return false;
+		}
+		else {
+			ErrorSalaryMsg.innerText = "";
+		}
 	}
 
 	var TeacherData = {
-		"TeacherFName": TeacherFName,
-		"TeacherLName": TeacherLName,
-		"EmployeeNumber": EmployeeNumber,
-		"HireDate": HireDate,
-		"Salary": Salary
+		TeacherFName: TeacherFName,
+		TeacherLName: TeacherLName,
+		EmployeeNumber: EmployeeNumber,
+		HireDate: HireDate,
+		Salary: Salary
 	};
 
-
+	
 	rq.open("POST", URL, true);
 	rq.setRequestHeader("Content-Type", "application/json");
-	rq.onreadystatechange = function () {
-		//ready state should be 4 AND status should be 200
-		if (rq.readyState == 4 || rq.status == 200) {
-			//request is successful and the request is finished
-
-			//nothing to render, the method returns nothing.
-
-			
-		}
-
-	}
+	
+	
 	//POST information sent through the .send() method
 	rq.send(JSON.stringify(TeacherData));
-
+	alert("Teacher Added");
+	window.location.href = "https://localhost:44324/Teacher/List";
 }

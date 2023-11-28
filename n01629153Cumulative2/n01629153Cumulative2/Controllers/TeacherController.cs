@@ -72,29 +72,32 @@ namespace n01629153Cumulative2.Controllers
             return View();
         }
 
-        //GET : /Teacher/Ajax_New
-        public ActionResult Ajax_New()
+        //GET : /Teacher/New_JSValidation
+        public ActionResult New_JSValidation()
         {
             return View();
-
         }
 
         //POST : /Teacher/Create
         [HttpPost]
-        public ActionResult Create(string TeacherFName, string TeacherLName, string EmployeeNumber, string HireDate, string Salary)
+        public ActionResult Create(Teacher NewTeacher)
         {
+            if (ModelState.IsValid)
+            {
+                Debug.WriteLine(ModelState.IsValid);
+                Teacher TeacherData = new Teacher();
+                TeacherData.TeacherFName = NewTeacher.TeacherFName;
+                TeacherData.TeacherLName = NewTeacher.TeacherLName;
+                TeacherData.EmployeeNumber = NewTeacher.EmployeeNumber;
+                TeacherData.HireDate = Convert.ToDateTime(NewTeacher.HireDate);
+                TeacherData.Salary =Convert.ToDouble(NewTeacher.Salary);
 
-            Teacher NewTeacher = new Teacher();
-            NewTeacher.TeacherFName = TeacherFName;
-            NewTeacher.TeacherLName = TeacherLName;
-            NewTeacher.EmployeeNumber = EmployeeNumber;
-            NewTeacher.HireDate = Convert.ToDateTime(HireDate);
-            NewTeacher.Salary = Convert.ToDouble(Salary);
+                TeacherDataController controller = new TeacherDataController();
+                controller.AddTeacher(TeacherData);
 
-            TeacherDataController controller = new TeacherDataController();
-            controller.AddTeacher(NewTeacher);
-
-            return RedirectToAction("List");
+                return RedirectToAction("List");
+            }
+            return View("New");
         }
     }
 }

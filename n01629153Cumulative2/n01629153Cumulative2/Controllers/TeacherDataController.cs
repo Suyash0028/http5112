@@ -123,11 +123,9 @@ namespace n01629153Cumulative2.Controllers
 
         [HttpPost]
         [EnableCors(origins: "*", methods: "*", headers: "*")]
-        public void AddTeacher([FromBody] Teacher NewTeacher)
+        public void AddTeacher([FromBody]Teacher NewTeacher)
         {
-            // if(ModelState.IsValid){
-                    //To check for validation
-            // }
+           
             //Create an instance of a connection
             MySqlConnection Conn = SchoolDB.AccessDatabase();
 
@@ -149,6 +147,7 @@ namespace n01629153Cumulative2.Controllers
             cmd.ExecuteNonQuery();
 
             Conn.Close();
+            
         }
     }
 }
