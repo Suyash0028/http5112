@@ -58,6 +58,11 @@ namespace n01629153Cumulative2.Controllers
 
 
         //POST : /Teacher/Delete/{id}
+        /// <summary>
+        /// This function is use to delete the teacher from the database and redirect to the list view
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>List view</returns>
         [HttpPost]
         public ActionResult Delete(int id)
         {
@@ -78,26 +83,25 @@ namespace n01629153Cumulative2.Controllers
             return View();
         }
 
-        //POST : /Teacher/Create
+        //POST : /Teacher/New
         [HttpPost]
-        public ActionResult Create(Teacher NewTeacher)
+        public ActionResult New(Teacher NewTeacher)
         {
             if (ModelState.IsValid)
             {
-                Debug.WriteLine(ModelState.IsValid);
                 Teacher TeacherData = new Teacher();
                 TeacherData.TeacherFName = NewTeacher.TeacherFName;
                 TeacherData.TeacherLName = NewTeacher.TeacherLName;
                 TeacherData.EmployeeNumber = NewTeacher.EmployeeNumber;
                 TeacherData.HireDate = Convert.ToDateTime(NewTeacher.HireDate);
-                TeacherData.Salary =Convert.ToDouble(NewTeacher.Salary);
+                TeacherData.Salary = Convert.ToDouble(NewTeacher.Salary);
 
                 TeacherDataController controller = new TeacherDataController();
                 controller.AddTeacher(TeacherData);
 
                 return RedirectToAction("List");
             }
-            return View("New");
+            return View(NewTeacher);
         }
     }
 }
