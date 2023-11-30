@@ -15,7 +15,11 @@ namespace n01629153Cumulative2.Controllers
     {
         // The database context class which allows us to access our MySQL Database.
         private SchoolDbContext SchoolDB = new SchoolDbContext();
-
+        /// <summary>
+        /// This function is to get teacher as well as to search the teacher based on any of there details using search key
+        /// </summary>
+        /// <param name="SearchKey"></param>
+        /// <returns>It returns list of teacher</returns>
         [HttpGet]
         [Route("api/TeacherData/ListTeachers/{SearchKey?}")]
         public IEnumerable<Teacher> ListTeachers(string SearchKey = null)
@@ -62,7 +66,11 @@ namespace n01629153Cumulative2.Controllers
             //Return the final list of author names
             return Teachers;
         }
-
+        /// <summary>
+        /// This function is used to find the teacher based on the id mentioned in the databse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Teacher object</returns>
         [HttpGet]
         public Teacher FindTeacher(int id)
         {
@@ -98,7 +106,10 @@ namespace n01629153Cumulative2.Controllers
 
             return NewTeacher;
         }
-
+        /// <summary>
+        /// This function is used to delete the teacher from the database
+        /// </summary>
+        /// <param name="id"></param>
         [HttpPost]
         public void DeleteTeacher(int id)
         {
@@ -120,7 +131,10 @@ namespace n01629153Cumulative2.Controllers
 
             Conn.Close();
         }
-
+        /// <summary>
+        /// This function receives an json as an input and creates an object and addes new teacher to the database
+        /// </summary>
+        /// <param name="NewTeacher"></param>
         [HttpPost]
         [EnableCors(origins: "*", methods: "*", headers: "*")]
         public void AddTeacher([FromBody]Teacher NewTeacher)

@@ -47,6 +47,11 @@ namespace n01629153Cumulative2.Controllers
         }
 
         //GET : /Teacher/DeleteConfirm/{id}
+        /// <summary>
+        /// This view is just to take confirmation about the delete action which they have requested for
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult DeleteConfirm(int id)
         {
             TeacherDataController controller = new TeacherDataController();
@@ -87,6 +92,7 @@ namespace n01629153Cumulative2.Controllers
         [HttpPost]
         public ActionResult New(Teacher NewTeacher)
         {
+            //This Modelstate is used to validate that the mentioned required fields in the model has value in those fields then it returns true otherwise false
             if (ModelState.IsValid)
             {
                 Teacher TeacherData = new Teacher();
