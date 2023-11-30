@@ -1,43 +1,44 @@
-﻿
+﻿@model n01629153Cumulative2.Models.Teacher
 @{
     ViewBag.Title = "New";
 }
 
 <h2>Add New Teacher</h2>
-
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <div id="containershow">
     <nav>
         <a class="navlink" href="/Teacher/List">Back To Teachers</a>
     </nav>
-    <form method="POST" action="/Teacher/New">
-            <div class="inputrow">
-                <label asp-for="TeacherFName">First Name:</label>
-                <input type="text" asp-for="TeacherFName" name="TeacherFName" />
-                <span asp-validation-for="TeacherFName"></span>
-            </div>
-            <div class="inputrow">
-                <label asp-for="TeacherLName">Last Name:</label>
-                <input type="text" asp-for="TeacherLName" name="TeacherLName" />
-                <span asp-validation-for="TeacherLName"></span>
-            </div>
-            <div class="inputrow">
-                <label asp-for="EmployeeNumber">Employee Number:</label>
-                <input type="text" asp-for="EmployeeNumber" name="EmployeeNumber" />
-                <span asp-validation-for="EmployeeNumber"></span>
-            </div>
-            <div class="inputrow">
-                <label asp-for="HireDate">Hire Date:</label>
-                <input type="date" asp-for="HireDate" name="HireDate" />
-                <span asp-validation-for="HireDate"></span>
-            </div>
-            <div class="inputrow">
-                <label asp-for="Salary">Salary:</label>
-                <input type="text" asp-for="Salary" name="Salary"  />
-                <span asp-validation-for="Salary"></span>
-            </div>
-            <div class="inputrow">
-                <input type="submit" value="Add Teacher" />
-            </div>
-        </form>
+    <form method="POST" action="/Teacher/New" class="form-group"> 
+        <div class="col-md-10">
+            <label asp-for="TeacherFName">First Name:</label>
+            @Html.EditorFor(model => model.TeacherFName)
+            @Html.ValidationMessageFor(model => model.TeacherFName, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-10">
+            <label asp-for="TeacherLName">Last Name:</label>
+            @Html.EditorFor(model => model.TeacherLName)
+            @Html.ValidationMessageFor(model => model.TeacherLName, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-10">
+            <label asp-for="EmployeeNumber">Employee Number:</label>
+            @Html.EditorFor(model => model.EmployeeNumber)
+            @Html.ValidationMessageFor(model => model.EmployeeNumber, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-10">
+            <label asp-for="HireDate">Hire Date:</label>
+            @Html.TextBoxFor(model => model.HireDate, new { @type = "date" })
+            @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-10">
+            <label asp-for="Salary">Salary:</label>
+            @Html.EditorFor(model => model.Salary)
+            @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-10">
+            <input type="submit" value="Add Teacher" />
+        </div>
+    </form>
 </div>
 

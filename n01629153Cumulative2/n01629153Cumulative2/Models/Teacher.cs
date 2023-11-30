@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace n01629153Cumulative2.Models
 {
@@ -17,8 +17,9 @@ namespace n01629153Cumulative2.Models
         [Required(ErrorMessage = "Employee Number is Required field !!")]
         public string EmployeeNumber { get; set; }
         [Required(ErrorMessage = "Hire Date is Required field !!")]
+        [DataType(DataType.DateTime)]
         public DateTime HireDate { get; set; }
-        [RegularExpression("^ [0 - 9]")]
+        [RegularExpression("^[0-9]*$")]
         [Required(ErrorMessage = "Salary is Required field !!")]
         public double Salary { get; set; }
     }
