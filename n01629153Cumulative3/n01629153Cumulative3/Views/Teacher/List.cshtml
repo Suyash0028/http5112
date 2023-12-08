@@ -1,0 +1,31 @@
+﻿﻿@model IEnumerable<n01629153Cumulative3.Models.Teacher>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<div id="containerlist">
+    <nav>
+        <a class="btn btn-primary btn-md" href="/Teacher/Add">+ Add New Teacher</a>
+        <a class="btn btn-outline-dark" href="/Home/Index">Home</a>
+    </nav>
+    <h2>List of Teachers</h2>
+    <form action="/Teacher/List" method="GET">
+        <input type="text" name="SearchKey" autocomplete="off" />
+        <input type="submit" value="Search" />
+    </form>
+        <table>
+            @foreach (n01629153Cumulative3.Models.Teacher teacher in Model)
+            {
+                <tr>                   
+                    <td>
+                        <a style="text-decoration: none" href="/Teacher/Show/@teacher.TeacherId">@teacher.TeacherFName @teacher.TeacherLName</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="/Teacher/DeleteConfirm/@teacher.TeacherId">Delete</a>
+                    </td>                                      
+                </tr>
+    }
+    </table>
+</div>

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "List_JS";
+}
+
+@{
+
+}
+<h2>List_JS</h2>
+
+<div id="containerlist">
+    <nav>
+        <a class="btn btn-primary btn-md" href="/Teacher/Add">+ Add New Teacher</a>
+        <a class="btn btn-outline-dark" href="/Home/Index">Home</a>
+    </nav>
+    <h2>List of Authors</h2>
+    <div>
+        <input type="text" id="SearchKey" name="SearchKey" autocomplete="off" onkeyup="_ListTeachers(this);" />
+    </div>
+    <div id="listteachers">
+    </div>
+    <script>
+        ListTeachers("");
+    </script>
+</div>
