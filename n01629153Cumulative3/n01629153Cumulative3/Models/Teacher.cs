@@ -30,6 +30,7 @@ namespace n01629153Cumulative3.Models
         public string EmployeeNumber { get; set; }
         [Required(ErrorMessage = "Hire Date is Required field !!")]
         [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime HireDate { get; set; }
         //This is regex to validate the user has added 0-9 numbers only no strings used
         [RegularExpression("^[1-9]\\d*(\\.\\d+)?$")]

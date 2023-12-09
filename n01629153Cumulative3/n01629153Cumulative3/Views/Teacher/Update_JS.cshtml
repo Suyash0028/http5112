@@ -1,0 +1,36 @@
+﻿@model n01629153Cumulative3.Models.Teacher
+@{
+    ViewBag.Title = "Update_JS";
+}
+
+<h2>Update_JS</h2>
+
+<div id="containershow">
+    <div class="inputrow">
+        <label for="TeacherFName">First Name:</label>
+        <input type="text" id="TeacherFName" name="TeacherFName" value="@Model.TeacherFName" />
+        <span id="TeacherFName_Error"></span>
+    </div>
+    <div class="inputrow">
+        <label for="TeacherLName">Last Name:</label>
+        <input type="text" id="TeacherLName" name="TeacherLName" value="@Model.TeacherLName" />
+        <span id="TeacherLName_Error"></span>
+    </div>
+    <div class="inputrow">
+        <label for="EmployeeNumber">Employee Number:</label>
+        <input type="text" id="EmployeeNumber" name="EmployeeNumber" value="@Model.EmployeeNumber" />
+        <span id="EmployeeNumber_Error"></span>
+    </div>
+    <div class="inputrow">
+        <label for="HireDate">Hire Date:</label>
+        <input type="date" id="HireDate" name="HireDate" value="@Model.HireDate.ToString("yyyy-MM-dd")" />
+        <span id="HireDate_Error"></span>
+    </div>
+    <div class="inputrow">
+        <label for="Salary">Salary:</label>
+        <input type="text" id="Salary" name="Salary" value="@Model.Salary" />
+        <span id="Salary_Error"></span>
+    </div>
+
+    <button onclick="UpdateTeacher(@Model.TeacherId);">Update Teacher</button>
+</div>

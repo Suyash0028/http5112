@@ -186,5 +186,24 @@ namespace n01629153Cumulative3.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// Routes to a dynamically rendered "JS Update" Page. The "JS Update" page will utilize JavaScript to send an HTTP Request to the data access layer (/api/TeacherData/UpdateTeacher)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Update_JS(int id)
+        {
+            try
+            {
+                Teacher SelectedTeacher = teacherDataController.FindTeacher(id);
+                return View(SelectedTeacher);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+                return RedirectToAction("Error", "Home");
+            }
+        }
     }
 }

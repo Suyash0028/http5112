@@ -296,6 +296,7 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Teacher\New_JSValidation.cshtml" />
     <Content Include="Views\Teacher\List_JS.cshtml" />
+    <Content Include="Views\Teacher\Update_JS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
